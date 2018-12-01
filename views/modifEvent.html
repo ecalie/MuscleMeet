@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rencontres Sportives</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="/client.js" defer></script>
+    
+    <!-- Pack d'icônes -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    
+  </head>
+
+ <body class="{{sportFavoris[0]}}">
+  <script type="text/javascript" src="client.js"></script>
+  <script>includeHeader("{{ user }}");</script>
+	
+  <div class="container">
+    <div class="col-md-6 col-md-offset-2">
+      <form method="post" action="/modifEvent" class="box">
+        <div class="row">
+          <h1> Modifier un événement </h1>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="Sport">Sport</label>
+              <select id="sport" name="sport" required>
+                <option value="Handball">Handball</option>
+                <option value="Volley">Volley</option>
+                <option value="Football américain">Football américain</option>
+                <option value="Rugby à XV">Rugby</option>
+                <option value="Football">Football (soccer)</option>
+                <option value="Badminton">Badminton</option>
+                <option value="Hockey sur glace">Hockey</option>
+                <option value="Basket-ball">Basket-ball</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="Date">Date</label>
+              <input type="date" class="form-control" id="date" name="date" value="{{evenement.date}}">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="Start">Début</label>
+              <input type="time" class="form-control" id="start" name="start" value="{{evenement.start}}">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="End">Fin</label>
+              <input type="time" class="form-control" id="end" name="end" value="{{evenement.end}}">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="Lieu">Lieu</label>
+              <input type="text" class="form-control" id="lieu" name="lieu" value="{{evenement.lieu}}">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="participantMax">Nombre de participant maximum</label>
+              <input type="number" min="0" class="form-control" id="participantMax" name="participantMax" value="{{evenement.participantMax}}">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="Prix">Prix</label>
+              <input type="number" min="0" class="form-control" id="prix" name="prix" value="{{evenement.prix}}">
+            </div>
+          </div>
+        </div>
+        
+        <input type="hidden" value="{{evenement.id}}" name="id">
+        
+        <div class="row">
+          <div class="col-md-2">
+            <button type="submit" value="post" class="btn btn-primary">
+              Confirmer
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <div class="col-md-2 col-md-offset-2">
+      <script type="text/javascript" src="client.js"></script>
+      <script>includePub("{{ sportFavoris[1] }}", "{{ sportFavoris[2] }}");</script>
+    </div>
+  </div>
+</body>
+</html>

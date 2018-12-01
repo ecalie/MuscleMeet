@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  background: url("https://cdn.glitch.com/b98fcf81-62d6-405c-8b74-201922f8dbaa%2Ffond.jpeg?1541875090319") no-repeat top center fixed;    
+	background-size: cover;
+}
+
+body.Basket-ball {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  background: url("https://cdn.glitch.com/b98fcf81-62d6-405c-8b74-201922f8dbaa%2Fbasket.jpg?1543521288746") no-repeat top center fixed;    
+	background-size: cover;
+}
+
+body.Handball {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  background: url("https://cdn.glitch.com/b98fcf81-62d6-405c-8b74-201922f8dbaa%2Fhand.jpg?1543521149270") no-repeat top center fixed;    
+	background-size: cover;
+}
+
+body.Badminton {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  background: url("https://cdn.glitch.com/b98fcf81-62d6-405c-8b74-201922f8dbaa%2Fbadminton.jpg?1543520982964") no-repeat top center fixed;    
+	background-size: cover;
+}
+
+body.Rugby {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  background: url("https://cdn.glitch.com/b98fcf81-62d6-405c-8b74-201922f8dbaa%2Frugby.jpeg?1543520470427") no-repeat top center fixed;    
+	background-size: cover;
+}
+
+body.Football {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  background: url("https://cdn.glitch.com/b98fcf81-62d6-405c-8b74-201922f8dbaa%2Ffootball.jpg?1543520579973") no-repeat top center fixed;    
+	background-size: cover;
+}
+
+body.soccer {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  background: url("https://cdn.glitch.com/b98fcf81-62d6-405c-8b74-201922f8dbaa%2Ffoot.jpeg?1543519327216") no-repeat top center fixed;    
+	background-size: cover;
+}
+
+body.Volley {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  background: url("https://cdn.glitch.com/b98fcf81-62d6-405c-8b74-201922f8dbaa%2Fvolley.jpeg?1543453539475") no-repeat top center fixed;
+	background-size: cover;
+}
+
+h1 {
+  color: #09026A;
+	text-align: center;
+}
+
+h2 {
+  font-style: italic;
+  color: #47437C;
+	text-align: center;
+}
+  
+p {
+  max-width: 600px;
+}
+
+/* -------------------------------------------------------
+ * Afficher le contenu de la page avec un fond transparent
+ * ------------------------------------------------------- */
+.container {
+    padding: 1em 1.5em;
+}
+
+.box {
+  padding: 1em 1.5em;
+  background-color: rgba(200, 200, 255, 0.7);
+  border-radius:10px 10px;
+}
+
+nav {
+    background-color: rgba(255, 255, 255, 0.7);
+}  
+
+/* --------------------- 
+ * Affichage des erreurs
+ * --------------------- */
+.erreur {
+  color: #FF0000;
+  
+}
+
+/* ------------------------
+ * Encadrer les évnènements
+ * ------------------------ */
+.event {
+  padding: 1em 1.5em;
+  border:1px solid black;
+  border-radius:10px 10px;
+}
+
+a.disabled {
+  pointer-events: none;
+}
+
+.space{
+  width:80px;
+}
+
+/* -----------
+ * Les onglets
+ * ----------- */
+
+ul.nav-tabs {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius:10px 10px;
+  padding: 0em 1.5em;
+  margin: 2em 0em;
+}
+
+/* -------
+ * Le chat
+ * ------- */
+  
+#chat {
+  height:200px;
+  overflow-y: scroll;
+  overflow-x: hide;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#userBox {
+  background-color: #C5C5C5;
+  border:2px solid;
+  border-color: #337ab7;
+  border-radius:10px 10px;
+  overflow: auto;
+  padding-left: 5px;
+  height:200px;
+}
+
+.panel-body {
+  padding: 0;
+  height: 1px; /* This fixed the text overflowing down the page */
+  flex-grow: 1;
+}
+
+.titre { 
+	text-align: center;
+  border-radius:10px 10px;
+}
+
+img {
+  margin: 1.5em 1.5em;
+}

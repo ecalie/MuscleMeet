@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rencontres Sportives</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="/client.js" defer></script>
+    
+    <!-- Pack d'icônes -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    
+  </head>
+
+ <body class="{{sportFavoris[0]}}">
+  <script type="text/javascript" src="client.js"></script>
+  <script>includeHeader("{{ user }}");</script>
+
+  
+  <div class="container">    
+    {% if page == "infos" %}  
+    <div class="col-md-8 col-md-offset-1">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="/profil?page=infos">Mes informations</a></li>
+        <li><a href="/profil?page=events">Mes évènements</a></li>
+        <li><a href="/profil?page=participe">Je participe</a></li>
+        <li><a href="/profil?page=interet">Ca m'intéresse</a></li>
+      </ul>  
+    
+      <form method="post" action="/profil" class="box">
+        <div class="row">
+          <h1> Mon profil </h1>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="Prenom">Pseudo</label>
+                <input type="text" class="form-control" id="pseudo" name="pseudo" value="{{userInfo.pseudo}}">
+            </div>
+          </div>
+        </div>
+        {% if (erreur.indexOf('1') != -1) %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="erreur">
+                  Ce pseudo est déjà utilisé.
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="Email">Adresse mail</label>
+              <input type="text" class="form-control" id="email" name="email" value="{{userInfo.email}}">
+            </div>
+          </div>
+        </div>
+
+        {% if (erreur.indexOf('2') != -1) %}
+        <div class="row">
+          <div class="col-md-12">
+              <div class ="erreur">
+                Un compte existe déjà avec cette adresse mail.
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="apassword">Ancien mot de passe</label>
+              <input type="password" class="form-control" id="apassword" placeholder="Ancien mot de passe" name="ancien_pass">
+            </div>
+          </div>
+        </div>
+
+        {% if (erreur.indexOf('4') != -1) %}
+        <div class="row">
+          <div class="col-md-12">
+              <div class ="erreur">
+                Le mot de passe est incorrect.
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="Password">Nouveau mot de passe</label>
+              <input type="password" class="form-control" id="password" placeholder="Mot de passe" name="pass">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="Vpassword">Confirmer mot de passe</label>
+              <input type="password" class="form-control" id="vpassword" placeholder="Confirmer mot de passe" name="passVerif">
+            </div>
+          </div>
+        </div>
+
+        {% if (erreur.indexOf('5') != -1) %}
+        <div class="row">
+          <div class="col-md-12">
+              <div class ="erreur">
+                Les deux mots de passe ne sont pas identiques.
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+          <div class="col-md-2 col-md-offset-3">
+            <button type="submit" value="post" class="btn btn-primary">
+              Confirmer
+            </button>
+          </div>
+        </div>
+      </form>
+      <form method="post" action="/supprimerCompte" class="box">
+        <div class="col-md-2 col-md-offset-2">
+          <button type="submit" value="post" class="btn btn-danger">
+            Supprimmer mon compte
+          </button>
+        </div>
+      </form>
+    </div>
+    
+    {% elseif page == "events" or page=="participe" or page=="interet" %}
+        
+      <div class="col-md-8 col-md-offset-1">
+        {% if page == "events" %}
+          <ul class="nav nav-tabs" >
+            <li><a href="/profil?page=infos">Mes informations</a></li>
+            <li class="active"><a href="/profil?page=events">Mes évènements</a></li>
+            <li><a href="/profil?page=participe">Je participe</a></li>
+            <li><a href="/profil?page=interet">Ca m'intéresse</a></li>
+          </ul>  
+        {% elseif page == "participe" %}
+          <ul class="nav nav-tabs" >
+            <li><a href="/profil?page=infos">Mes informations</a></li>
+            <li><a href="/profil?page=events">Mes évènements</a></li>
+            <li class="active"><a href="/profil?page=participe">Je participe</a></li>
+            <li><a href="/profil?page=interet">Ca m'intéresse</a></li>
+          </ul> 
+        {% elseif page == "interet" %}
+          <ul class="nav nav-tabs" >
+            <li><a href="/profil?page=infos">Mes informations</a></li>
+            <li><a href="/profil?page=events">Mes évènements</a></li>
+            <li><a href="/profil?page=participe">Je participe</a></li>
+            <li class="active"><a href="/profil?page=interet">Ca m'intéresse</a></li>
+          </ul> 
+        {% endif %}
+
+        <div class="space"></div>
+        <div class="box">
+          <div class="row">
+            <h1>
+              {% if page == "events" %}
+                Mes évènements
+              {% elseif page == "participe" %}
+                Les évènements auxquels je participe
+              {% elseif page =="interet" %}
+                Les évènements qui m'intéressent
+              {% endif %}
+            </h1>
+          </div>
+          {% for e in evenements %}
+          <div class="event">
+            <div class="row">
+              <div class="col-md-6">
+                Sport : {{e.sport}}
+              </div>
+
+              <div class="col-md-6">
+                Date : {{e.date}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                Lieu : {{e.lieu}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                Heure de début : {{e.start}}
+              </div>
+
+              <div class="col-md-6">
+                Heure de fin : {{e.end}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                Nombre maximal de participants : {{e.participantMax}}
+              </div>
+              <div class="col-md-6">
+                Prix : {{e.prix}}$
+              </div>
+            </div>
+
+            <div class="row">
+              {% if page == "events" %}
+                <div class="col-md-2 col-md-offset-3">
+                  <form method="post" action="/initModifEvent">
+                  <input type="hidden" value="{{e.id}}" name="id">
+                    <button type="submit" value="post" class="btn btn-primary">
+                      Modifier
+                    </button>
+                  </form>
+                </div>
+
+                <div class="space"></div>
+
+                <div class="col-md-2 col-md-offset-2">
+                  <form method="post" action="/supprEvent">
+                  <input type="hidden" value="{{e.id}}" name="id">
+                    <button type="submit" value="post" class="btn btn-primary">
+                      Supprimer
+                    </button>
+                  </form>
+                </div>
+            
+              {% elseif page == "participe" or page == "interet" %}
+                <div class="col-md-2 col-md-offset-5">
+                  <a class="btn btn-primary" href="/fiche-evenement?id={{e.idEvent}}" role="button">Plus de détails</a>
+                </div>
+              {% endif %}
+            </div>
+            
+          </div>
+          {% endfor %}
+        </div> 
+      </div>
+    {% endif %}
+    
+    <div class="col-md-2 col-md-offset-1">
+      <script type="text/javascript" src="client.js"></script>
+      <script>includePub("{{ sportFavoris[1] }}", "{{ sportFavoris[2] }}");</script>
+    </div>
+  </div>
+</body>
+</html>

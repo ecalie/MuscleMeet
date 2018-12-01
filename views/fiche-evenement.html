@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rencontres Sportives</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <!-- chat kit -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script src="chat.js"></script>
+    
+    <script src="/client.js" defer></script>
+    
+    <!-- Pack d'icônes -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    
+  </head>
+  
+   <body class="{{sportFavoris[0]}}">
+    <script type="text/javascript" src="client.js"></script>
+    <script>includeHeader("{{ user }}");</script>
+    
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-2 box">
+          <h1>Détail de l'évènement</h1>
+          <a data-toggle="tooltip" title="{{info}}">
+            <span class="glyphicon glyphicon-info-sign"></span>
+          </a>
+
+          {% if user %}
+          
+          <div class="row">
+            <div class="col-md-offset-3 col-md-3">
+              <a class="btn btn-primary" href="/participer?id={{event.id}}" role="button">
+                {% if participe %}
+                  <span class="glyphicon glyphicon-star"/>
+                {% else %}
+                  <span class="glyphicon glyphicon-star-empty"/>   
+                {% endif %}
+                S'inscrire
+              </a>
+            </div>
+            <div class="col-md-3">
+              <a class="btn btn-primary" href="/interesser?id={{event.id}}" role="button">
+                {% if interesse %}
+                  <span class="glyphicon glyphicon-star"/>
+                {% else %}
+                  <span class="glyphicon glyphicon-star-empty"/>   
+                {% endif %}
+                S'intéresser
+              </a>
+            </div>                
+          </div>
+          {% else %}
+          <div class="row">
+            <div class="col-md-offset-3 col-md-3">
+              <a class="btn btn-primary disabled" href="/participer?id={{event.id}}" role="button">
+                <span class="glyphicon glyphicon-star-empty"/> 
+                S'inscrire
+              </a>
+            </div>
+            <div class="col-md-3">
+              <a class="btn btn-primary disabled" href="/interesser?id={{event.id}}" role="button">
+                <span class="glyphicon glyphicon-star-empty"/> 
+                S'intéresser
+              </a>
+            </div>                
+          </div>
+          {% endif %}
+          <div class="row">
+            <div class="col-md-offset-3 col-md-3">
+              {{nbParticipants}} participant(s)
+          </div>
+            <div class="col-md-3">
+              {{nbInteresses}} intéressé(s)
+            </div>
+          </div>
+          
+          {% if erreur=="complet" %}
+          <div class="row">
+            <div class="col-md-12">
+                <div class ="erreur">
+                  L'évènement est complet.
+              </div>
+            </div>
+          </div>
+         {% endif %}
+          
+          <br/>
+          <div class="row">
+            <div class="col-md-6">
+              Sport : {{event.sport}}
+            </div>
+
+            <div class="col-md-6">
+              Date : {{event.date}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              Lieu : {{event.lieu}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              Heure de début : {{event.start}}
+            </div>
+
+            <div class="col-md-6">
+              Heure de fin : {{event.end}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              Nombre maximal de participants : {{event.participantMax}}
+            </div>
+            <div class="col-md-6">
+              Prix : {{event.prix}}$
+            </div>
+          </div>
+          
+         
+        </div>
+        
+        
+        <div class="col-md-2 col-md-offset-2">
+          <script type="text/javascript" src="client.js"></script>
+          <script>includePub("{{ sportFavoris[1] }}", "{{ sportFavoris[2] }}");</script>
+        </div>
+        
+      </div>
+      
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8 box">
+          
+          <div class="row bg-primary text-white titre">
+            <h3> Chat! </h3>
+          </div>
+          
+          <div class="row">
+            <div id="chat" class="col-xs-9">     
+            </div>
+            <div id="userBox" class="col-xs-3">
+              <b>USERS</b>
+              <div id="users">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-group input-group-sm">
+              <input id="msg-input" class="form-control" type="text" placeholder="Type something...">
+              <span class="input-group-btn">
+                <button class="btn btn-default">Send</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+    <script type="text/javascript" src="chat.js"></script>
+    <script>startChat("{{ user }}");</script>
+  </body>
+</html>

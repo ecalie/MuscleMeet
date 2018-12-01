@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Créer un évènement</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/client.js" defer></script>
+    
+    <!-- Pack d'icônes -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+  </head>
+   <body class="{{sportFavoris[0]}}">
+    <script type="text/javascript" src="client.js"></script>
+    <script>includeHeader("{{ user }}");</script>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+          <form method="POST" action="/creer_evenement" class="box">
+            <div class="row">
+              <h1>Créer un nouvel évènement <br> <small> Veillez renseigner votre évènement</small></h1>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="Sport">Sport</label>
+                  <select id="sport" name="sport" required>
+                    <option value="Handball">Handball</option>
+                    <option value="Volley">Volley</option>
+                    <option value="Football américain">Football américain</option>
+                    <option value="Rugby à XV">Rugby</option>
+                    <option value="Football">Football (soccer)</option>
+                    <option value="Badminton">Badminton</option>
+                    <option value="Hockey sur glace">Hockey</option>
+                    <option value="Basket-ball">Basket-ball</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="Date">Date</label>
+                  <input type="date" class="form-control" id="date" placeholder="aaaa-mm-jj" name="date" required>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="lieu">Lieu</label>
+                  <input type="text" class="form-control" id="lieu" placeholder="Lieu" name="lieu" required> 
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="debut">Heure de début</label>
+                  <input type="time" class="form-control" id="debut" placeholder="hh:mm" name="debut" required>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fin">Heure de fin</label>
+                  <input type="time" class="form-control" id="fin" placeholder="hh:mm" name="fin">
+                </div>
+              </div>
+            </div>
+            
+             <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nb">Nombre maximal de participants</label>
+                  <input type="number" min="0" class="form-control" id="nb" placeholder="Nombre max" name="nb">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="prix">Prix de l'activité</label>
+                  <input type="number" value="0" min="0" class="form-control" id="prix" placeholder="Prix" name="prix">
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-2 col-md-offset-5">
+                <button type="submit" value="Creer_evenement" class="btn btn-primary">
+                  Valider
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        
+        <div class="col-md-2 col-md-offset-1">
+          <script type="text/javascript" src="client.js"></script>
+          <script>includePub("{{ sportFavoris[1] }}", "{{ sportFavoris[2] }}");</script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

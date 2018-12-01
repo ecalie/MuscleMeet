@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rencontres Sportives</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/client.js" defer></script>
+    
+    <!-- Pack d'icônes -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+  </head>
+  
+  <body class="{{sportFavoris[0]}}">
+    <script type="text/javascript" src="client.js"></script>
+    <script>includeHeader("{{ user }}");</script>
+    
+    <div class="container d-flex justify-content-between">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="box">
+            <h1>
+                Bienvenue sur le site de rencontre sportive {{ user }}
+            </h1>
+            <h2>
+                Sur ce site vous avez la possibilité de trouver des personnes pratiquant le même sport que vous.
+            </h2>
+
+            <!--
+               {% if user %} user present {% else %} user absent {% endif %}
+            <div class="row">
+              TEST appel à la BDD Client avec for : {% for u in userInfo %}{{u.pseudo}}{% endfor %}
+            </div>
+            -->
+            
+            <div class="row" >
+              <div class="col-md-12">
+                <form method="POST" action="/recherche_avancee" class="box">
+                  <div class="row">
+                    <a href="/recherche_avancee">Recherche avancée</a>
+                  </div>
+                  
+                  {% if recherche_avancee %} 
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Sport">Sport</label>
+                        <input type="text" class="form-control" id="sport" placeholder="Sport" name="sport" value="{{recherche.sport}}">
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Lieu">Lieu</label>
+                        <input type="text" class="form-control" id="lieu" placeholder="Lieu" name="lieu" value="{{recherche.lieu}}">
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Date">Date</label>
+                        <input type="date" class="form-control" id="date" placeholder="Date" name="date" value="{{recherche.date}}">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-2 col-md-offset-5">
+                      <button type="submit" value="recherche_avancee" class="btn btn-primary">
+                        Valider
+                      </button>
+                    </div>
+                  </div>                  
+                  {% endif %}
+                  
+                </form>
+              </div>
+            </div>
+        
+              
+            {% for e in evenements %}
+            <div class="event">
+              <div class="row">
+                <div class="col-md-5">
+                  Sport : {{e.sport}}
+                </div>
+
+                <div class="col-md-5">
+                  Date : {{e.date}}
+                </div>
+                </div>
+
+              <div class="row">
+                <div class="col-md-10">
+                  Lieu : {{e.lieu}}
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-5">
+                  Heure de début : {{e.start}}
+                </div>
+
+                <div class="col-md-5">
+                  Heure de fin : {{e.end}}
+                </div>
+                
+                <div class="col-md-2">
+                  <a class="btn btn-primary" href="/fiche-evenement?id={{e.id}}" role="button">Plus de détails</a>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-5">
+                  Nombre maximal de participants : {{e.participantMax}}
+                </div>
+                <div class="col-md-5">
+                  Prix : {{e.prix}}$
+                </div>
+              </div>
+            </div>
+            {% endfor%}
+
+          </div>
+        </div>
+        
+        <div class="col-md-2">
+          <script type="text/javascript" src="client.js"></script>
+          <script>includePub("{{ sportFavoris[1] }}", "{{ sportFavoris[2] }}");</script>
+        </div>
+    
+    
+      </div>
+    </div>
+    
+  </body>
+</html>

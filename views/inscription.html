@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="Content-Type" content="utf-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="style.css" />
+	<title>Inscription</title>
+</head>
+
+ <body class="{{sportFavoris[0]}}">
+	<div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-2">
+        <form method="post" action="/inscription" class="box">
+          <div class="row">
+            <h1> Inscription </h1>
+            <h2>Merci de renseigner vos informations</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="Prenom">Pseudo</label>
+                <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" name="pseudo" value="{{info.pseudo}}" required>
+              </div>
+            </div>
+          </div>
+
+          {% if (erreur.indexOf('2') != -1) %}
+          <div class="row">
+            <div class="col-md-12">
+                <div class ="erreur">
+                  Le pseudo ne doit contenir que des lettres et des chiffres.
+              </div>
+            </div>
+          </div>
+          {% endif %}          
+          
+          {% if (erreur.indexOf('5') != -1) %}
+          <div class="row">
+            <div class="col-md-12">
+                <div class ="erreur">
+                  Ce pseudo est déjà utilisé.
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="Email">Adresse mail</label>
+                <input type="text" class="form-control" id="email" placeholder="Adresse mail" name="email" value="{{info.email}}" required>
+              </div>
+            </div>
+          </div>
+
+          {% if (erreur.indexOf('3') != -1) %}
+          <div class="row">
+            <div class="col-md-12">
+                <div class ="erreur">
+                  L'addresse mail n'est pas bien formée.
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          
+          {% if (erreur.indexOf('4') != -1) %}
+          <div class="row">
+            <div class="col-md-12">
+                <div class ="erreur">
+                  Un compte existe déjà avec cette adresse mail.
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="Password">Mot de passe</label>
+                <input type="password" class="form-control" id="password" placeholder="Mot de passe" name="pass">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="Vpassword">Confirmer mot de passe</label>
+                <input type="password" class="form-control" id="vpassword" placeholder="Confirmer mot de passe" name="passVerif">
+              </div>
+            </div>
+          </div>
+
+          {% if (erreur.indexOf('1') != -1) %}
+          <div class="row">
+            <div class="col-md-12">
+                <div class ="erreur">
+                  Les mots de passent doivent être identiques.
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          
+          <div class="row">
+            <div class="col-md-offset-5 col-md-2">
+              <button type="submit" value="post" class="btn btn-primary">
+                Confirmer
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <div class="col-md-2 col-md-offset-2">
+        <script type="text/javascript" src="client.js"></script>
+        <script>includePub("{{ sportFavoris[1] }}", "{{ sportFavoris[2] }}");</script>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
